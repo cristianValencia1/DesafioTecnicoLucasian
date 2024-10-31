@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongo:latest
+    restart: unless-stopped
+    container_name: desafioLucasian
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: 'root'
+      MONGO_INITDB_ROOT_PASSWORD: 'Secret'
+      MONGO_INITDB_DATABASE: 'transactions'
+
+    ports:
+      - 27017:27017
+    volumes:
+      - ./init/init-script.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - mongodb_data_container:/data/db
+
+volumes:
+  mongodb_data_container:

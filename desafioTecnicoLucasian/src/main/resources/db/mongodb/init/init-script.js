@@ -1,0 +1,1 @@
+db.createdCollection('transactions', { capped: false});
